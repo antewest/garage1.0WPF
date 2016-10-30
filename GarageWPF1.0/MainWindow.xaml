@@ -1,0 +1,120 @@
+﻿<Window x:Class="GarageWPF1._0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:GarageWPF1._0"
+        Title="GarageWPF 1.0" Height="600" Width="800" Icon="transport.ico" ResizeMode="CanMinimize"
+        >
+
+    <Window.Resources>
+        
+    </Window.Resources>
+
+    <Grid Background="#f0f5f8">
+        
+        <StackPanel Orientation="Horizontal" Margin="202,58,32,474">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Width" Value="120"/>
+                    <Setter Property="Height" Value="25"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Name="sortVehicleBtn" Content="Vehicle" Click="sortVehicleBtn_Click"/>
+            <Button Name="sortRegBtn" Content="Reg Number" Click="sortRegBtn_Click"/>
+            <Button Name="sortWheelsBtn" Content="Wheels" Click="sortWheelsBtn_Click"/>
+            <Button Name="sortColorBtn" Content="Color" Click="sortColorBtn_Click"/>
+        </StackPanel>
+        <Border Margin="202,84,32,180" BorderThickness="1" BorderBrush="LightSlateGray">
+            <Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Background="White">
+                    <ItemsControl x:Name="icTodoList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid TextBlock.FontSize="15" Margin="0,0,5,5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding name}" Grid.Column="0"/>
+                                    <TextBlock Text="{Binding regnr}" Grid.Column="1"/>
+                                    <TextBlock Text="{Binding wheels}" Grid.Column="2"/>
+                                    <TextBlock Text="{Binding color}" Grid.Column="3"/>
+                                    <TextBlock Text="" Background="{Binding color}" Grid.Column="4"/>
+
+                                    <!--<StackPanel Orientation="Horizontal" Grid.Column="2">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Width" Value="120"/>
+                                                <Setter Property="Padding" Value="20,0,0,0"/>
+                                                <Setter Property="Background" Value="White"/>
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        
+                                    </StackPanel>-->
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <Rectangle Fill="Gray" Width="Auto" Height="Auto" Name="rect1">
+                    <Rectangle.Style>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="Visibility" Value="Hidden"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding garageLoaded}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Rectangle.Style>
+                </Rectangle>
+            </Grid>
+        </Border>
+        <Border HorizontalAlignment="Left" Height="114" Margin="202,407,0,0" VerticalAlignment="Top" Width="540" BorderThickness="2" BorderBrush="LightSlateGray">
+            <Grid>
+                <Grid Background="White"/>
+                <Rectangle Fill="Gray" Width="Auto" Height="Auto" Name="rect2">
+                    <Rectangle.Style>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="Visibility" Value="Hidden"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding vehicleSelected}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Rectangle.Style>
+                </Rectangle>
+            </Grid>
+        </Border>
+        <StackPanel Margin="28,84,594,245">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Width" Value="130"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Margin" Value="0,0,0,5"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="loadBtn" Content="Load Garage" Click="loadBtn_Click"/>
+            <Button x:Name="newGrgBtn" Content="New Garage"/>
+            <Button x:Name="newVehBtn" Content="New Vehicle" Click="newVehBtn_Click"/>
+        </StackPanel>
+
+        <StackPanel Margin="28,266,594,31">
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="10,0,0,0" TextWrapping="Wrap" Text="Enter Search Term" Width="132"/>
+            <Button x:Name="button" Content="Search" Height="24" Margin="10,0"/>
+
+
+        </StackPanel>
+        
+    </Grid>
+
+</Window>

@@ -1,0 +1,44 @@
+﻿<Window x:Class="GarageWPF1._0.AddVehicleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GarageWPF1._0"
+        mc:Ignorable="d"
+        Title="Add Vehicle" Height="300" Width="300" Icon="transport.ico">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Car"/>
+            <RadioButton x:Name="carRadioBtn"></RadioButton>
+            <TextBlock Text="Motorcycle"/>
+            <RadioButton x:Name="mcRadioBtn"></RadioButton>
+            <TextBlock Text="Bus"/>
+            <RadioButton x:Name="busRadioBtn"></RadioButton>
+            <TextBlock Text="Aeroplane"/>
+            <RadioButton x:Name="planeRadioBtn"></RadioButton>
+            <TextBlock Text="Boat"/>
+            <RadioButton x:Name="boatRadioBtn"></RadioButton>
+        </StackPanel>
+        <StackPanel Margin="0,10,0,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="20"/>
+                    <Setter Property="Margin" Value="0,5,0,5"/>
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Reg Nr"></TextBlock>
+                <TextBox Name="regnrTxt" Text="Registration Number"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Wheels"></TextBlock>
+                <TextBox Name="wheelsTxt" Text="Wheels"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Color"></TextBlock>
+                <TextBox Name="colorTxt" Text="Color"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
