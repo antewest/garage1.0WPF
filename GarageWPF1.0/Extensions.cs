@@ -12,6 +12,7 @@ namespace GarageWPF1._0
         {
             Type t = typeof(T);
             return t.GetProperty(name).GetValue(obj);
+            //tds
         }
     }
 }
