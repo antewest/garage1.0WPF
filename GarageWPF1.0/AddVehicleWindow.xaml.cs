@@ -19,9 +19,55 @@ namespace GarageWPF1._0
     /// </summary>
     public partial class AddVehicleWindow : Window
     {
-        public AddVehicleWindow()
+
+        GarageManager gMngr;
+
+        public AddVehicleWindow(object gManager)
         {
             InitializeComponent();
+            gMngr = (GarageManager)gManager;
+
+            var elements = new List<UIElement> {regnrTxt, wheelsTxt, colorTxt};
+
+            addEventListeners(elements);
+        }
+
+        private void addEventListeners(List<UIElement> elements)
+        {
+            foreach (var element in elements)
+            {
+                element.GotKeyboardFocus += focusEvent;
+                element.PreviewMouseLeftButtonDown += focusEvent2;
+            }
+        }
+
+        private void focusEvent2(object sender, MouseButtonEventArgs e)
+        {
+            DependencyObject parent = e.OriginalSource as UIElement;
+            while (parent != null && !(parent is TextBox))
+                parent = VisualTreeHelper.GetParent(parent);
+
+            if (parent != null)
+            {
+                var textBox = (TextBox)parent;
+                if (!textBox.IsKeyboardFocusWithin)
+                {
+                    textBox.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void focusEvent(object sender, RoutedEventArgs e)
+        {
+            var textBox = e.OriginalSource as TextBox;
+            if (textBox != null)
+                textBox.SelectAll();
+        }
+
+        private void create_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

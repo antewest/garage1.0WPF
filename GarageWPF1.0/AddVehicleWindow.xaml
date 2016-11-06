@@ -5,40 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GarageWPF1._0"
         mc:Ignorable="d"
-        Title="Add Vehicle" Height="300" Width="300" Icon="transport.ico">
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Car"/>
-            <RadioButton x:Name="carRadioBtn"></RadioButton>
-            <TextBlock Text="Motorcycle"/>
-            <RadioButton x:Name="mcRadioBtn"></RadioButton>
-            <TextBlock Text="Bus"/>
-            <RadioButton x:Name="busRadioBtn"></RadioButton>
-            <TextBlock Text="Aeroplane"/>
-            <RadioButton x:Name="planeRadioBtn"></RadioButton>
-            <TextBlock Text="Boat"/>
-            <RadioButton x:Name="boatRadioBtn"></RadioButton>
+        Title="Add Vehicle" Height="288.235" Width="327.059" Icon="transport.ico">
+    <Grid>
+        <StackPanel Margin="41,30,25,53">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="carRadioBtn" GroupName="vehicles"></RadioButton>
+                <TextBlock Text="Car"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="mcRadioBtn" GroupName="vehicles"></RadioButton>
+                <TextBlock Text="Motorcycle"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="busRadioBtn" GroupName="vehicles"></RadioButton>
+                <TextBlock Text="Bus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="planeRadioBtn" GroupName="vehicles"></RadioButton>
+                <TextBlock Text="Aeroplane"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="boatRadioBtn" GroupName="vehicles"></RadioButton>
+                <TextBlock Text="Boat"/>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Width" Value="50"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="Margin" Value="0,5,0,5"/>
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Reg Nr"></TextBlock>
+                    <TextBox Name="regnrTxt" Text="Registration Number"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Wheels"></TextBlock>
+                    <TextBox Name="wheelsTxt" Text="Wheels"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Color"></TextBlock>
+                    <TextBox Name="colorTxt" Text="Color"/>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
-        <StackPanel Margin="0,10,0,0">
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Width" Value="50"/>
-                    <Setter Property="Height" Value="20"/>
-                    <Setter Property="Margin" Value="0,5,0,5"/>
-                </Style>
-            </StackPanel.Resources>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Reg Nr"></TextBlock>
-                <TextBox Name="regnrTxt" Text="Registration Number"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Wheels"></TextBlock>
-                <TextBox Name="wheelsTxt" Text="Wheels"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Color"></TextBlock>
-                <TextBox Name="colorTxt" Text="Color"/>
-            </StackPanel>
-        </StackPanel>
-    </StackPanel>
+        <Button x:Name="button" Content="Create" HorizontalAlignment="Left" Margin="41,220,0,0" VerticalAlignment="Top" Width="113" Height="28" Click="create_Click"/>
+    </Grid>
 </Window>

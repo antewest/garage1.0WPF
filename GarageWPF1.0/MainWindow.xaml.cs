@@ -33,9 +33,9 @@ namespace GarageWPF1._0
             setDataContexts();
         }
 
-        private void LoadGarage()
+        internal void LoadGarage()
         {
-            gMngr.CreateExampleGarage();
+            //gMngr.CreateExampleGarage();
             uiMngr.garageLoaded = true;
             listCurrent = new ObservableCollection<Vehicle>(gMngr.GetAll(0));
             icTodoList.ItemsSource = listCurrent;
@@ -50,7 +50,6 @@ namespace GarageWPF1._0
         private void loadBtn_Click(object sender, RoutedEventArgs e)
         {
             LoadGarage();
-            
         }
 
         private void sortVehicleBtn_Click(object sender, RoutedEventArgs e)
@@ -137,7 +136,25 @@ namespace GarageWPF1._0
 
         private void newVehBtn_Click(object sender, RoutedEventArgs e)
         {
+            Window newVehicle = new AddVehicleWindow(gMngr);
+            newVehicle.Owner = this;
+            newVehicle.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            //newVehicle.Closed += garage_Closed;
+            newVehicle.ShowDialog();
+        }
 
+        private void newGrgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Window newGarage = new AddGarage(gMngr);
+            newGarage.Owner = this;
+            newGarage.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            newGarage.Closed += garage_Closed;
+            newGarage.ShowDialog();
+        }
+
+        private void garage_Closed(object sender, EventArgs e)
+        {
+            LoadGarage();
         }
     }
 }

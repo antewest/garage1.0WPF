@@ -4,12 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GarageWPF1._0
 {
-    class GarageManager
+    internal class GarageManager: INotifyPropertyChanged
     {
         private List<Garage<Vehicle>> garageList = new List<Garage<Vehicle>>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public GarageManager()
         {
@@ -110,6 +113,12 @@ namespace GarageWPF1._0
             var query = queryList.OrderByDescending(b => b.GetProperty(sortProperty));
 
             return new ObservableCollection<Vehicle>(query);
+        }
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

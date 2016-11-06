@@ -104,7 +104,7 @@
                 </Style>
             </StackPanel.Resources>
             <Button x:Name="loadBtn" Content="Load Garage" Click="loadBtn_Click"/>
-            <Button x:Name="newGrgBtn" Content="New Garage"/>
+            <Button x:Name="newGrgBtn" Content="New Garage" Click="newGrgBtn_Click"/>
             <Button x:Name="newVehBtn" Content="New Vehicle" Click="newVehBtn_Click"/>
         </StackPanel>
 
